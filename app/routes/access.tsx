@@ -1,12 +1,21 @@
 // provides type safety/inference
-import { Welcome } from "~/components/welcome";
 import type { Route } from "./+types/access";
 import { Header } from "~/components/header";
+import { Footer } from "~/components/footer";
+import { Logger } from "~/components/logger";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    //Argumentos para el meta
+    { title: "Inicio de sesion" }
+  ];
+}
 
 // provides `loaderData` to the component
 export function loader({}: Route.LoaderArgs) {
   return [
-    {text: "What now"}
+    //LoaderData
+    {Data: "Esto es un placeholder"}
   ]
 }
 
@@ -14,5 +23,6 @@ export function loader({}: Route.LoaderArgs) {
 export default function Component({
   loaderData,
 }: Route.ComponentProps) {
-  return [<Header nav={["/", "Exit"]}/>,<Welcome nav={"/"}/>]
+  //Formacion de acceso - Header envia por props los elementos de navegacion, El cuerpo del documento y el footer
+  return [<Header nav={["/", "Exit"]}/>,<Logger/>,<Footer/>]
 }

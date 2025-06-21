@@ -1,8 +1,8 @@
 import { useState } from "react";
-import logo from "./logo-light.svg"
+import logo from "/logo.svg"
 import { AudioRecorder } from "./recorder";
 
-export function Red_social() {
+export function Red_social(props) {
     const [audioUrl, setAudioUrl] = useState(null);
     const [blob, setBlob] = useState(null);
 
@@ -21,7 +21,7 @@ export function Red_social() {
     const upload = async () => {
         try {
             const formData = new FormData();
-            formData.append("audio", blob, "grabacion.webm");
+            formData.append("audio", blob, "grabacion.mp3");
 
             const res = await fetch("http://localhost:3001/api/upload", {
                 method: "POST",
@@ -36,9 +36,18 @@ export function Red_social() {
     }
     return (
         <div className="flex items-center w-1/1 h-1/1 border-2 flex-col">
-            <div className="flex flex-row">
-                <img src={logo} className="w-1/5"></img>
-                <span className="text-sm">Name</span>
+            <div className="flex h-1/8 justify-between  w-1/1">
+                <img src={logo} className="h-1/1"></img>
+                {props ?
+        <div className="flex flex-col">
+          <span className="text-sm">{props.user}</span>
+        </div>
+        :
+        <div className="flex flex-col">
+          <span className="text-sm">Name</span>
+        </div>
+      }
+                
             </div>
             <AudioRecorder onRecordingComplete={handleRecordingComplete} />
             {audioUrl && (

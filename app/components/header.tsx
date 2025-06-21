@@ -1,18 +1,24 @@
 import { Link } from "react-router";
-import logo from "./logo-light.svg"
+import logo from "/logo.svg"
 
-export function Header(props) {
+//Estructura del header - recibe los elementos de navegacion
+export const Header = (props) => {
   return (
+    /* Header de la pagina - Flexbox, items centrados, background amarillo, altura de 10% */
     <header className="flex items-center bg-yellow-300 h-1/10">
-        <img src={logo} className="w-1/10 h-1/10"></img>
-        <nav className="flex items-center style-none justify-between">
-            {listar(props.nav)}
-        </nav>
+      {/* Logo de la pagina - 10% de ancho y alto del header*/}
+      <img src={logo} className="h-1/1" />
+      {/* Navegador de la pagina - Flexbox, items centrados, sin estilos en la letra, separacion entre elementos*/}
+      <nav className="flex items-center style-none justify-between">
+        {//Lista los elementos de navegacion
+          listar(props.nav)}
+      </nav>
     </header>
   );
 }
-
-function listar(array){
-    const elements = array.map(element => <div className="flex"><Link to={element}>{element}</Link></div>)
-    return elements
+//Funcion que lista el array de navegacion
+function listar(array) {
+  //Mapeo del array
+  const elements = array.map(element => <div className="flex"><Link to={element}>{element}</Link></div>)
+  return elements
 }

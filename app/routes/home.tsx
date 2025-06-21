@@ -1,15 +1,16 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../components/welcome";
+import { Social_main } from "../components/social_base";
 import { Header } from "../components/header";
 import { Footer } from "../components/footer";
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ }: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    //Argumentos para el meta
+    { title: "ChazaRadio" }
   ];
 }
 
 export default function Home() {
-  return [<Header nav={["about", "Exit"]}/>,<Welcome nav={"about"}/>,<Footer/>]
+  //Formacion de la pagina inicial - Header envia por props los elementos de navegacion, El cuerpo del documento y el footer
+  return [<Header nav={["Login", "Exit"]} />, <Social_main />, <Footer />]
 }

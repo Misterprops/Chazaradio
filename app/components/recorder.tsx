@@ -36,7 +36,7 @@ export const AudioRecorder = ({ onRecordingComplete }) => {
   return (
     <div className="flex gap-4 items-center">
       {!recording ? (
-        <button onClick={startRecording}>
+        <button onClick={startRecording} className="hover:cursor-pointer hover:border-2">
           🎙️ Empezar
         </button>
       ) : (
