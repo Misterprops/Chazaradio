@@ -21,7 +21,7 @@ jobs:
             curl -X POST \
               -u "$AZURE_PUBLISH_USERNAME:$AZURE_PUBLISH_PASSWORD" \
               --data-binary "@app.zip" \
-              "https://$AZURE_WEBAPP_NAME.scm.azurewebsites.net/api/zipdeploy"
+              "https://udistrital-radiochaza-back-end-ggaee0epemaxb9fq.scm.eastus2-01.azurewebsites.net/api/publish?type=zip"              
 
 workflows:
   version: 2
