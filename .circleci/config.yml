@@ -23,6 +23,9 @@ jobs:
       - store_artifacts:
           path: ~/artifacts
           destination: node-build
+      - run:
+          name: deploy
+          command: 'ls -R .'
   deploy:
     # This is an example deploy job, not actually used by the workflow
     docker:
@@ -31,7 +34,7 @@ jobs:
       # Replace this with steps to deploy to users
       - run:
           name: deploy
-          command: '#e.g. ./deploy.sh'
+          command: 'ls -R .'
 workflows:
   build:
     jobs:
