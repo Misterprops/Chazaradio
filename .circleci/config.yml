@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/node:18.17
+      - image: cimg/base:stable
     steps:
       - checkout
       - run: npm install
@@ -11,7 +11,7 @@ jobs:
 
   deploy:
     docker:
-      - image: cimg/node:18.17
+      - image: cimg/base:stable
     steps:
       - checkout
       - run: zip -r app.zip .
