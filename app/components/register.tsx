@@ -71,7 +71,7 @@ export const Register = () => {
 
             <form>
                 <div>
-                    <label htmlFor="code">Correo</label>
+                    <label htmlFor="code">Codigo</label>
                     <input type="text" id='code' value={code} onChange={(e) => setCode(e.target.value)} className='bg-white' />
                 </div>
                 <button onClick={(e) => {
