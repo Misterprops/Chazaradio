@@ -7,9 +7,26 @@ import { fileURLToPath } from 'url';
 import multer from 'multer';
 import { execa } from 'execa';
 import ffmpeg from 'ffmpeg-static';
+import { createRequestHandler } from "@react-router/express";
+import "react-router";
 
 const app = express();
-const PORT = 3001;
+
+// Ruta absoluta a la carpeta de build
+const clientBuildPath = path.resolve("build/client");
+
+// Sirve los assets generados por Vite
+app.use(express.static(clientBuildPath));
+
+// Sirve archivos estáticos del cliente
+app.use(
+  createRequestHandler({
+    build: () =>
+      import("virtual:react-router/server-build"),
+  }),
+);
+
+const port = process.env.PORT || 3000;
 
 // 🧭 Rutas relativas para carpeta media
 const __filename = fileURLToPath(import.meta.url);
@@ -74,8 +91,8 @@ app.post('/api/descargar', async (req, res) => {
         res.status(500).json({ error: 'Fallo al descargar audio' });
     }
 });
-app.listen(PORT, () => {
-    console.log(`Servidor Node escuchando en http://localhost:${PORT}`);
+app.listen(port, () => {
+    console.log(`Servidor Node escuchando en http://localhost:${port}`);
 });
 
 //uploader
@@ -85,7 +102,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 app.post('/api/upload', upload.single('audio'), (req, res) => {
-    const fileUrl = `http://localhost:${PORT}/media/${req.file.filename}`;
+    const fileUrl = `http://localhost:${port}/media/${req.file.filename}`;
     res.json({ url: fileUrl });
 });
 
@@ -99,7 +116,7 @@ app.get("/audios", (req, res) => {
 
         const audios = files
             .filter(f => f.endsWith(".mp3"))
-            .map(f => `http://localhost:${PORT}/media/${f}`);
+            .map(f => `http://localhost:${port}/media/${f}`);
 
         res.json(audios);
     });

@@ -7,7 +7,7 @@ export function Lista() {
   const [playingUrl, setPlayingUrl] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3001/audios")
+    fetch("http://localhost:3000/audios")
       .then(res => res.json())
       .then(data => setAudios(data));
   }, []);

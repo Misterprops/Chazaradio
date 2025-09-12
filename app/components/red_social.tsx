@@ -23,7 +23,7 @@ export function Red_social(props) {
             const formData = new FormData();
             formData.append("audio", blob, "grabacion.mp3");
 
-            const res = await fetch("http://localhost:3001/api/upload", {
+            const res = await fetch("http://localhost:3000/api/upload", {
                 method: "POST",
                 body: formData,
             });
