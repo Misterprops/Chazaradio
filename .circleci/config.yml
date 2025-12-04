@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run build  # if applicable
-      - run: npx @azure/static-web-apps-cli deploy ./dist --deployment-token $AZURE_SWA_TOKEN
+      - run: npx @azure/static-web-apps-cli deploy ./build --deployment-token $AZURE_SWA_TOKEN
       
       
 #workflows:
