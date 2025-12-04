@@ -11,19 +11,19 @@ jobs:
       - run: npx @azure/static-web-apps-cli deploy ./dist --deployment-token $AZURE_SWA_TOKEN
       
       
-workflows:
-  deploy-frontend:
-    jobs:
-      - build:
-          filters:
-            branches:
-              only:
-                - circleci-project-setup
 #workflows:
-  #version: 2
-  #build-and-deploy:
+  #deploy-frontend:
     #jobs:
-      #- build
-      #- deploy:
-          #requires:
-            #- build
+      #- build:
+        #  filters:
+          #  branches:
+            #  only:
+              #  - circleci-project-setup
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
