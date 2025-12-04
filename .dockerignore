@@ -1,3 +1,5 @@
 .react-router
 node_modules
 README.md
+.env
+.env.*

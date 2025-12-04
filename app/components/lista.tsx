@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from "react";
+const API = import.meta.env.VITE_APP_API;
 
 export function Lista() {
   const audio = useRef(null);
@@ -7,7 +8,7 @@ export function Lista() {
   const [playingUrl, setPlayingUrl] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/audios")
+    fetch(`${API}/audios`)
       .then(res => res.json())
       .then(data => setAudios(data));
   }, []);

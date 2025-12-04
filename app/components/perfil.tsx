@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import logo from "/logo.svg"
+const API = import.meta.env.VITE_APP_API;
 
 export function Perfil(props) {
   const [url, setUrl] = useState("");
@@ -7,7 +8,7 @@ export function Perfil(props) {
 
   const agregar = async (link) => {
     try {
-      const res = await fetch('http://localhost:3000/api/descargar', {
+      const res = await fetch(`${API}/api/descargar`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
+const API = import.meta.env.VITE_APP_API;
 
 const registrar = async (data) => {
     alert("registra: " + data.user + "-" + data.password + "-" + data.mail)
     try {
-        const res = await fetch('http://localhost:3000/api/registro', {
+        const res = await fetch(`${API}/api/registro`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -24,7 +25,7 @@ const registrar = async (data) => {
 
 const validar = async (data) =>{
     try {
-        const res = await fetch('http://localhost:3000/api/verificar', {
+        const res = await fetch(`${API}/api/verificar`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

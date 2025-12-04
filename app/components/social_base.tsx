@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Lista } from "./lista";
 import { Perfil } from "./perfil";
 import { Red_social } from "./red_social";
+const API = import.meta.env.VITE_APP_API;
 
 //Estructura del main de la red social
 export const Social_main = () => {
@@ -9,7 +10,7 @@ export const Social_main = () => {
   useEffect(() => {
     const user = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/user_data', {
+        const res = await fetch(`${API}/api/user_data`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
