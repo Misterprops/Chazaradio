@@ -8,26 +8,22 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run build  # if applicable
-
-  deploy:
-    docker:
-      - image: cimg/node:22.16.0
-    steps:
-      - checkout
-      - run: zip -r app.zip .
-      - run:
-          name: Deploy to Azure App Service
-          command: |
-            curl -X POST \
-              -u "$AZURE_PUBLISH_USERNAME:$AZURE_PUBLISH_PASSWORD" \
-              --data-binary "@app.zip" \
-              "https://udistrital-radiochaza-back-end-ggaee0epemaxb9fq.scm.eastus2-01.azurewebsites.net/api/publish?type=zip"              
-
+      - run: npx @azure/static-web-apps-cli deploy ./dist --deployment-token $AZURE_SWA_TOKEN
+      
+      
 workflows:
-  version: 2
-  build-and-deploy:
+  deploy-frontend:
     jobs:
-      - build
-      - deploy:
-          requires:
-            - build
+      - build-frontend:
+          filters:
+            branches:
+              only:
+                - circleci-project-setup
+#workflows:
+  #version: 2
+  #build-and-deploy:
+    #jobs:
+      #- build
+      #- deploy:
+          #requires:
+            #- build
