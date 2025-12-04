@@ -3,11 +3,6 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-export default defineConfig(({isSsrBuild})=>({
-  build: {
-    rollupOptions: isSsrBuild
-      ? { input: "./back/downloader.js" }
-      : undefined,
-  },
+export default defineConfig(({})=>({
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
 }));

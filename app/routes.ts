@@ -11,5 +11,6 @@ import {
 export default [
     //Ruta inicial
     index("routes/home.tsx"),
-    route("Login", "routes/access.tsx"),
+    route("/Login", "routes/access.tsx"),
+    route("/Emisora", "routes/emisora.tsx")
 ] satisfies RouteConfig;

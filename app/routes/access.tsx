@@ -24,5 +24,5 @@ export default function Component({
   loaderData,
 }: Route.ComponentProps) {
   //Formacion de acceso - Header envia por props los elementos de navegacion, El cuerpo del documento y el footer
-  return [<Header nav={["/", "Exit"]}/>,<Logger/>,<Footer/>]
+  return [<Header nav={[["/","Inicio"], ["/Emisora", "Emisora"]]}/>,<Logger/>,<Footer/>]
 }

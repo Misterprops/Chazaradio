@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
 import { useNavigate } from "react-router";
+const API = import.meta.env.VITE_APP_API;
 
 export const Log = () => {
     const [user, setUser] = useState("");
@@ -9,7 +10,7 @@ export const Log = () => {
 
     const login = async (user, password) => {
         try {
-            const res = await fetch('http://localhost:3000/api/login', {
+            const res = await fetch(`${API}/api/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
